@@ -27,4 +27,26 @@ public class StudentRepository {
         return studentEntity;
     }
 
+    public void updateStudent(StudentEntity studentEntity) throws RuntimeException{
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.update(studentEntity);
+            transaction.commit();
+        } catch (Exception e) {
+            transaction.rollback();
+            throw new RuntimeException("Error at update " + studentEntity.getId());
+        }
+    }
+
+    public void deleteStudent(StudentEntity studentEntity) throws RuntimeException{
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.delete(studentEntity);
+            transaction.commit();
+        } catch (Exception e) {
+            transaction.rollback();
+            throw new RuntimeException("Error at delete " + studentEntity.getId());
+        }
+    }
+
 }

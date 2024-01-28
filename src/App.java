@@ -26,5 +26,13 @@ public class App {
         StudentEntity studentEntity = studentRepository.getStudent(1);
         System.out.println(studentEntity.toString());
 
+        studentEntity.setNic("974476543V");
+        studentRepository.updateStudent(studentEntity);
+
+        StudentEntity updatedStudent = studentRepository.getStudent(1);
+        System.out.println(updatedStudent.toString());
+
+        studentRepository.deleteStudent(updatedStudent);
+
     }
 }
