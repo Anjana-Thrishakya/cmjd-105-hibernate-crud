@@ -22,4 +22,9 @@ public class StudentRepository {
         }
     }
 
+    public StudentEntity getStudent(Integer id){
+        StudentEntity studentEntity = session.get(StudentEntity.class, id);
+        return studentEntity;
+    }
+
 }
